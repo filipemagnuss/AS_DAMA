@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css"
+        integrity="sha384-q94+BZtLrkL1/ohfjR8c6L+A6qzNH9R2hBLwyoAfu3i/WCvQjzL2RQJ3uNHDISdU" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="shortcut icon" href="https://chessboardjs.com/favicon.ico" type="image/x-icon">
+    <title>Damas</title>
+</head>
+
+<body>
+
+    <div class="container-fluid px-5 pt-5">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <h2 class="text-center mb-0">Jogo de Damas com Inteligência Artificial</h2>
+                <small class="text-center d-block"><a class="btn btn-link" target="_blank"
+                        href="https://github.com/ekoptra/ai-checkers-js">Source Code</a></small>
+                <div class="my-4">
+                    <select class="form-select mb-3" id="escolha-jogo">
+                        <option selected>Escolha o Jogo</option>
+                        <option value="contra">Jogar contra o Computador</option>
+                        <option value="computador">Computador vs Computador</option>
+                    </select>
+                    <select class="form-select mb-3 d-none" id="level-pretas">
+                        <option selected>Selecione o Nível Peças Pretas</option>
+                        <option value="3">Peças Pretas Level 1 (Nível AI = 3)</option>
+                        <option value="6">Peças Pretas Level 2 (Nível AI = 6)</option>
+                        <option value="8">Peças Pretas Level 3 (Nível AI = 8)</option>
+                        <option value="10">Peças Pretas Level 4 (Nível AI = 10)</option>
+                    </select>
+                    <select class="form-select mb-3 d-none" id="level-brancas">
+                        <option selected>Selecione o Nível Peças Brancas</option>
+                        <option value="3">Peças Brancas Level 1 (Nível AI = 3)</option>
+                        <option value="6">Peças Brancas Level 2 (Nível AI = 6)</option>
+                        <option value="8">Peças Brancas Level 3 (Nível AI = 8)</option>
+                        <option value="10">Peças Brancas Level 4 (Nível AI = 10)</option>
+                    </select>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-success" disabled id="botao-iniciar">Iniciar Jogo</button>
+                </div>
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h5>Histórico de Movimentações <span class="tempo-jogo"></span></h5>
+                    </div>
+                    <div class="card-body" id="history">
+                        <ul class="list-group" id="list-history"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex justify-content-center">
+                    <div id="board" style="width: 400px"></div>
+                </div>
+                <div class="row mt-3 text-center">
+                    <div class="col-sm-6 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Turno</h5>
+                                <p class="mb-0" id="turno"> - </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Vencedor</h5>
+                                <p class="mb-0" id="vencedor"> - </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-danger d-none" id="botao-desistir">Desistir</button>
+                    <button class="btn btn-danger d-none" id="botao-parar">Parar o Jogo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous">
+    </script>
+    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"
+        integrity="sha384-8Vi8VHwn3vjQ9eUHUxex3JSN/NFqUg3QbPyX8kWyb93+8AC/pPWTzj+nHtbC5bxD" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="/checkerHandler.js"></script>
+    <script src="/alpha-beta-pruning.js"></script>
+    <script src="/gameHadler.js"></script>
+</body>
+
+</html>
